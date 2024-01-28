@@ -111,23 +111,23 @@ class CC
     protected function Check($card)
     {
         $headers = array();
-        $headers[] = 'origin: https://amznloot.com';
-        $headers[] = 'accept-language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7';
-        $headers[] = 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36';
-        $headers[] = 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8';
-        $headers[] = 'Accept: */*';
-        $headers[] = 'referer: https://amznloot.com/cc-checker/';
-        $headers[] = 'X-Requested-With: XMLHttpRequest';
-        $headers[] = 'Connection: keep-alive';
-        $ch = curl_init();
-        $options = array(
-            CURLOPT_URL             => "https://amznloot.com/cc-checker/api.php",
-            CURLOPT_RETURNTRANSFER  => true,
-            CURLOPT_POST            => true,
-            CURLOPT_POSTFIELDS      => "data=" . urlencode($card),
-            CURLOPT_HTTPHEADER      => $headers
-        );
-        curl_setopt_array($ch, $options);
+        headers = {
+    'authority': 'checker.visatk.com',
+    'accept': 'application/json, text/javascript, */*; q=0.01',
+    'accept-language': 'en-US,en;q=0.9',
+    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    # 'cookie': '__gads=ID=3207b887e0ef18db-2256c3ac2be00097:T=1685888062:RT=1685888062:S=ALNI_Mb1Y57cSfMdAXlHRQN8rYn8XJBLwg; __gpi=UID=00000c3d0c02546a:T=1685888062:RT=1685888062:S=ALNI_MZxOkOa0JM_SZj0VcbfSbymCzba5g; PHPSESSID=npumq9cbbpngotau2a19oj3iu6',
+    'origin': 'https://checker.visatk.com',
+    'referer': 'https://checker.visatk.com/ccn1/',
+    'sec-ch-ua': '"Not:A-Brand";v="99", "Chromium";v="112"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': 'Mozilla/5.0 (Linux; Android 9; CPH1923) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36',
+    'x-requested-with': 'XMLHttpRequest',
+  }        curl_setopt_array($ch, $options);
         $exec = curl_exec($ch);
         $status = json_decode($exec);
         switch ($status->error) {
